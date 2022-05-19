@@ -40,7 +40,7 @@ public class Map extends javax.swing.JPanel implements CellListener {
         for (Cell[] line : matrix)
             for (Cell cell : line) {
                 add(cell);
-                cell.addExplodeListener(this);
+                cell.addCellListener(this);
             }
     }
     

@@ -29,8 +29,8 @@ public class Cell extends javax.swing.JButton {
         setListener();
     }    
     
-    public void addExplodeListener(CellListener explodeListener) {
-        map = explodeListener;
+    public void addCellListener(CellListener cellListener) {
+        map = cellListener;
     }
     
     public void reveal() {
