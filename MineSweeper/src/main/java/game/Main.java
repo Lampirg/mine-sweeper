@@ -13,20 +13,22 @@ import map.Map;
  *
  * @author Lampirg
  */
-public class Main extends javax.swing.JFrame implements MapListener {
+public final class Main extends javax.swing.JFrame implements MapListener {
 
     /**
      * Creates new form Main
      */
     public final static int CELL_SIZE = 60;
     
-    private final static int DEFAULT_HEIGHT = 10;
-    private final static int DEFAULT_WIDTH = 10;
-    private final static int DEFAULT_BOMBCOUNT = 10;
+    public final static int DEFAULT_HEIGHT = 10;
+    public final static int DEFAULT_WIDTH = 10;
+    public final static int DEFAULT_BOMBCOUNT = 10;
     
     private int heightCount = DEFAULT_HEIGHT;
     private int widthCount = DEFAULT_WIDTH;
     private int bombcount = DEFAULT_BOMBCOUNT;
+    
+    private Map map;
     
     Dimension dimension;
     javax.swing.JFrame settings;
@@ -36,15 +38,27 @@ public class Main extends javax.swing.JFrame implements MapListener {
     }
     
     public Main(int heightCount, int widthCount, int bombcount) {
+        
+        reInitComponents();
+        createMap(heightCount, widthCount, bombcount);
+        setResizable(false);
+    }
+    
+    public void createMap(int heightCount, int widthCount, int bombcount) {
+        if (map != null)
+            field.remove(map);
         this.heightCount = heightCount;
         this.widthCount = widthCount;
         this.bombcount = bombcount;
-        reInitComponents();
-        Map map = new Map(heightCount, widthCount, bombcount);
+        try {
+            map = new Map(heightCount, widthCount, bombcount);
+        }
+        catch (IllegalArgumentException e) {
+            map = new Map(DEFAULT_HEIGHT, DEFAULT_WIDTH, DEFAULT_BOMBCOUNT);
+        }
         map.addMapListener(this);
         field.add(map);
-        
-        setResizable(false);
+        pack();
     }
     
 //    public void initialize(int heightCount, int widthCount, int bombcount) {
