@@ -57,6 +57,8 @@ public final class Main extends javax.swing.JFrame implements MapListener {
             map = new Map(DEFAULT_HEIGHT, DEFAULT_WIDTH, DEFAULT_BOMBCOUNT);
         }
         map.addMapListener(this);
+        dimension = new Dimension(widthCount * CELL_SIZE, heightCount * CELL_SIZE);
+        field.setMinimumSize(dimension);
         field.add(map);
         pack();
     }
@@ -84,11 +86,11 @@ public final class Main extends javax.swing.JFrame implements MapListener {
     }
     
     private void reInitComponents() {
-        dimension = new Dimension(widthCount * CELL_SIZE, heightCount * CELL_SIZE);
+        
         //dimension = new Dimension(500, 300);
         initComponents();
         gameState.setText("Good Luck!");
-        field.setMinimumSize(dimension);
+        
         field.setLayout(new java.awt.BorderLayout());
         pack();
     }
@@ -114,6 +116,7 @@ public final class Main extends javax.swing.JFrame implements MapListener {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("mainFrame"); // NOI18N
 
+        field.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         field.setPreferredSize(new java.awt.Dimension(400, 400));
 
         javax.swing.GroupLayout fieldLayout = new javax.swing.GroupLayout(field);

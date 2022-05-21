@@ -16,9 +16,9 @@ public class Settings extends javax.swing.JPanel {
     Main mainFrame;
     javax.swing.JFrame settingsFrame;
     
-    private int heightCount = 6;
-    private int widthCount = 6;
-    private int bombCount = 10;
+    private int heightCount = Main.DEFAULT_HEIGHT;
+    private int widthCount = Main.DEFAULT_WIDTH;
+    private int bombCount = Main.DEFAULT_BOMBCOUNT;
     
     public Settings(javax.swing.JFrame frame) {
         settingsFrame = frame;
@@ -56,13 +56,13 @@ public class Settings extends javax.swing.JPanel {
         });
 
         heightField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        heightField.setText("3");
+        heightField.setText(Integer.toString(heightCount));
 
         widthField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        widthField.setText("3");
+        widthField.setText(Integer.toString(widthCount));
 
         bombField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        bombField.setText("3");
+        bombField.setText(Integer.toString(bombCount));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,14 +73,14 @@ public class Settings extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(heightField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton1)
                                 .addGap(68, 68, 68))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(heightField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                                 .addComponent(widthField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 45, Short.MAX_VALUE)))
                         .addComponent(bombField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
